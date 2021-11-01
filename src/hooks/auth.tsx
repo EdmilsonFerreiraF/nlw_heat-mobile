@@ -49,7 +49,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         try {
             setIsSigningIn(true)
             const authUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=${SCOPE}`
-            const authSessionResponse= await AuthSessions.startAsync({ authUrl }) as AuthorizationResponse
+            const authSessionResponse = await AuthSessions.startAsync({ authUrl }) as AuthorizationResponse
 
             if (authSessionResponse.type === 'success' && authSessionResponse.params.error !== 'access_denied') {
                 const authResponse = await api.post('/authenticate', { code: authSessionResponse.params.code })
@@ -69,7 +69,9 @@ function AuthProvider({ children }: AuthProviderProps) {
     }
 
     async function signOut() {
-
+        setUser(null)
+        await AsyncStorage.removeItem(USER_STORAGE)
+        await AsyncStorage.removeItem(TOKEN_STORAGE)
     }
 
     useEffect(() => {
