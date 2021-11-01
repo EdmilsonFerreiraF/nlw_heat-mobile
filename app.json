@@ -3,6 +3,7 @@
     "name": "nlw_heat-mobile",
     "slug": "nlw_heat-mobile",
     "version": "1.0.0",
+    "scheme": "nlw_heat-mobile",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
